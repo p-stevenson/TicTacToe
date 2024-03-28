@@ -11,8 +11,9 @@ const TIC_TAC_TOE = (function () {
 			console.log(_BOARD);
 		};
 
-		const _UPDATE_BOARD = (row, col, player) => {
-			_BOARD[row].splice(col, 1, player);
+		const _UPDATE_BOARD = (row, col, playerSymbol) => {
+			_BOARD[row].splice(col, 1, playerSymbol);
+			GAME._INCREMENT_MOVE_COUNTER();
 		};
 
 		const CHECK_POS_AVAIL = (row, col, player) => {
