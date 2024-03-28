@@ -29,14 +29,12 @@ const TIC_TAC_TOE = (function () {
 			return {name, playerNumber, playerSymbol, score};
 		}
 
-				_PLAYERS[0] === undefined ? _PLAYERS[0] = _PLAYER_1 : _PLAYERS[1] = _PLAYER_2;
-				console.log(_PLAYERS);
-			}
-			const INCREMENT_SCORE = (playerNumber) => {
-				_PLAYERS[playerNumber].score += 1;
-				console.log(_PLAYERS);
-			}
-			return {CREATE_PLAYER, INCREMENT_SCORE, _PLAYERS}
+		const ADD_PLAYER = (playerNumber) => {
+			_PLAYERS_LIST.push(_CREATE_PLAYER(playerNumber));
+		}
+
+		const DISPLAY_PLAYERS = () => {
+			console.log(_PLAYERS_LIST);
 		}
 	)
 	();
