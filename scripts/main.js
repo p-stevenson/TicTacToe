@@ -7,7 +7,7 @@ const TIC_TAC_TOE = (function () {
 			['*', '*', '*'],
 			['*', '*', '*']
 		];
-		const GET_BOARD = () => {
+		const DISPLAY_BOARD = () => {
 			console.log(_BOARD);
 		};
 
