@@ -16,10 +16,8 @@ const TIC_TAC_TOE = (function () {
 			GAME._INCREMENT_MOVE_COUNTER();
 		};
 
-		const CHECK_POS_AVAIL = (row, col, player) => {
-			_BOARD[row][col] === "*" ? _UPDATE_BOARD(row, col, PLAYER._PLAYERS[player].symbol) : console.log('This square is already in use, pick again');
-		}
-		return {GET_BOARD, CHECK_POS_AVAIL};
+
+		return {DISPLAY_BOARD, _BOARD, _UPDATE_BOARD};
 	})();
 
 	const PLAYER = (function () {
