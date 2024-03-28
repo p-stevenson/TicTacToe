@@ -64,7 +64,8 @@ const TIC_TAC_TOE = (function () {
 			GAME_BOARD._BOARD[row][col] === "*" ? GAME_BOARD._UPDATE_BOARD(row, col, _PLAYERS_LIST[index].playerSymbol) :
 				console.log('This square is already in use, pick again');
 		}
-		return {MAKE_MOVE}
+
+		return {MAKE_MOVE, DISPLAY_MOVE_COUNTER, _INCREMENT_MOVE_COUNTER, CHECK_FOR_TIE, CHECK_POS_AVAIL};
 	})();
 	return {GAME_BOARD, GAME, PLAYER}
 })();
