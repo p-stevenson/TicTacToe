@@ -22,11 +22,12 @@ const TIC_TAC_TOE = (function () {
 	})();
 
 	const PLAYER = (function () {
-			const _PLAYERS = []
-			const CREATE_PLAYER = () => {
-				name = prompt('Enter your name.');
-				const _PLAYER_1 = {name, player: 'Player1', symbol: 'X', score: 0}
-				const _PLAYER_2 = {name, player: 'Player2', symbol: '0', score: 0}
+		const _CREATE_PLAYER = (playerNumber) => {
+			const name = prompt('Enter your name.');
+			const playerSymbol = playerNumber === 1 ? 'X' : 'O';
+			const score = 0;
+			return {name, playerNumber, playerSymbol, score};
+		}
 
 				_PLAYERS[0] === undefined ? _PLAYERS[0] = _PLAYER_1 : _PLAYERS[1] = _PLAYER_2;
 				console.log(_PLAYERS);
