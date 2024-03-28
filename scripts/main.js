@@ -1,4 +1,5 @@
 const TIC_TAC_TOE = (function () {
+	const _PLAYERS_LIST = [];
 
 	const GAME_BOARD = (function () {
 		const _BOARD = [
