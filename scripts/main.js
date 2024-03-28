@@ -36,8 +36,9 @@ const TIC_TAC_TOE = (function () {
 		const DISPLAY_PLAYERS = () => {
 			console.log(_PLAYERS_LIST);
 		}
-	)
-	();
+
+		return {ADD_PLAYER, DISPLAY_PLAYERS};
+	})();
 
 	const GAME = (function () {
 		let _move_counter = 0;
