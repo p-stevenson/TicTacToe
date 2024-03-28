@@ -60,9 +60,9 @@ const TIC_TAC_TOE = (function () {
 			_move_counter === 2 ? alert("It's a tie") : CHECK_POS_AVAIL(row, col, index);
 		}
 
-		const MAKE_MOVE = (row, col, player) => {
-			GAME_BOARD.CHECK_POS_AVAIL(row, col, player)
-			console.log(GAME_BOARD.GET_BOARD())
+		const CHECK_POS_AVAIL = (row, col, index) => {
+			GAME_BOARD._BOARD[row][col] === "*" ? GAME_BOARD._UPDATE_BOARD(row, col, _PLAYERS_LIST[index].playerSymbol) :
+				console.log('This square is already in use, pick again');
 		}
 		return {MAKE_MOVE}
 	})();
