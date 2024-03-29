@@ -45,15 +45,14 @@ const TIC_TAC_TOE = (function () {
             console.log(_move_counter);
         }
 
-		const MAKE_MOVE = (row, col, index) => {
-			_move_counter % 2 === 0 ? index = 0 : index = 1;
-			CHECK_FOR_TIE(row, col, index)
-			console.log(GAME_BOARD.DISPLAY_BOARD());
-		}
+        const MAKE_MOVE = (row, col, index) => {
+            _move_counter % 2 === 0 ? index = 0 : index = 1;
+            _CHECK_FOR_TIE(row, col, index)
+        }
 
-		const CHECK_FOR_TIE = (row, col, index) => {
-			_move_counter === 2 ? alert("It's a tie") : CHECK_POS_AVAIL(row, col, index);
-		}
+        const _CHECK_FOR_TIE = (row, col, index) => {
+            _move_counter !== 2 ? _CHECK_POS_AVAIL(row, col, index) : alert("It's a tie");
+        }
 
         const _CHECK_POS_AVAIL = (row, col, index) => {
 
