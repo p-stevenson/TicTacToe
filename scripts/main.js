@@ -40,18 +40,11 @@ const TIC_TAC_TOE = (function () {
     const GAME = (function () {
         let _move_counter = 0;
 
-        const _INCREMENT_MOVE_COUNTER = () => {
-            _move_counter += 1;
-            console.log(_move_counter);
-        }
+
 
         const MAKE_MOVE = (row, col, index) => {
             _move_counter % 2 === 0 ? index = 0 : index = 1;
             _CHECK_FOR_TIE(row, col, index)
-        }
-
-        const _CHECK_FOR_TIE = (row, col, index) => {
-            _move_counter !== 2 ? _CHECK_POS_AVAIL(row, col, index) : alert("It's a tie");
         }
 
         const _CHECK_POS_AVAIL = (row, col, index) => {
@@ -62,6 +55,14 @@ const TIC_TAC_TOE = (function () {
             } else {
                 console.log('This square is already in use, pick again.');
             }
+        }
+        const _CHECK_FOR_TIE = (row, col, index) => {
+            _move_counter !== 2 ? _CHECK_POS_AVAIL(row, col, index) : alert("It's a tie");
+        }
+
+        const _INCREMENT_MOVE_COUNTER = () => {
+            _move_counter += 1;
+            console.log(_move_counter);
         }
 
         return {MAKE_MOVE};
