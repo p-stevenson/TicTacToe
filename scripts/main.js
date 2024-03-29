@@ -40,8 +40,6 @@ const TIC_TAC_TOE = (function () {
     const GAME = (function () {
         let _move_counter = 0;
 
-
-
         const MAKE_MOVE = (row, col, index) => {
             _move_counter % 2 === 0 ? index = 0 : index = 1;
             _CHECK_FOR_TIE(row, col, index)
