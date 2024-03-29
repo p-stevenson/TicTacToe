@@ -37,8 +37,8 @@ const TIC_TAC_TOE = (function () {
         return {ADD_PLAYER, DISPLAY_PLAYERS};
     })();
 
-	const GAME = (function () {
-		let _move_counter = 0;
+    const GAME = (function () {
+        let _move_counter = 0;
 
         const _INCREMENT_MOVE_COUNTER = () => {
             _move_counter += 1;
