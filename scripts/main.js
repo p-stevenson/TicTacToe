@@ -3,7 +3,7 @@ const TIC_TAC_TOE = (function () {
 
 	const GAME_BOARD = (function () {
 		const _BOARD = [
-			['X', 'X', 'X'],
+			['*', '*', '*'],
 			['*', '*', '*'],
 			['*', '*', '*']
 		];
@@ -67,10 +67,57 @@ const TIC_TAC_TOE = (function () {
 			[['*', '0', '*'], ['*', '0', '*'], ['*', '0', '*']],
 			[['*', '*', '0'], ['*', '*', '0'], ['*', '*', '0']],
 
-				// Diagonals
-				[['0', '*', '*'], ['*', '0', '*'], ['*', '*', '0']],
-				[['*', '*', '0'], ['*', '0', '*'], ['0', '*', '*']]
-			]
+			// Diagonals
+			[['0', '*', '*'], ['*', '0', '*'], ['*', '*', '0']],
+			[['*', '*', '0'], ['*', '0', '*'], ['0', '*', '*']]
+		]
+
+		const MAKE_MOVE = (row, col, index) => {
+			_move_counter % 2 === 0 ? index = 0 : index = 1;
+			_CHECK_FOR_TIE(row, col, index)
+		}
+
+		const _CHECK_POS_AVAIL = (row, col, index) => {
+
+			if (GAME_BOARD._BOARD[row][col] === "*") {
+				GAME_BOARD._UPDATE_BOARD(row, col, _PLAYERS_LIST[index].playerSymbol);
+				_INCREMENT_MOVE_COUNTER();
+			} else {
+				console.log('This square is already in use, pick again.');
+			}
+		}
+		const _CHECK_FOR_TIE = (row, col, index) => {
+			_move_counter !== 9 ? _CHECK_POS_AVAIL(row, col, index) : alert("It's a tie");
+		}
+
+		const _CHECK_FOR_WIN = () => {
+			if (_move_counter >= 5) {
+				if (_CHECK_P1_WIN_STATES()) {
+					alert('P1 Wins');
+				} else if (_CHECK_P2_WIN_STATES()) {
+					alert('P2 Wins');
+				} else {
+					console.log(`continue`);
+				}
+			} else {
+				console.log(_move_counter);
+			}
+		}
+
+		const _CHECK_P1_WIN_STATES = () => {
+			_p1_win_states.forEach((element) => {
+				if (JSON.stringify(element) === JSON.stringify(GAME_BOARD._BOARD)) {
+					return true;
+				}
+			});
+		};
+
+		const _CHECK_P2_WIN_STATES = () => {
+			_p2_win_states.forEach((element) => {
+				if (JSON.stringify(element) === JSON.stringify(GAME_BOARD._BOARD)) {
+					return true;
+				}
+			});
 		};
 
 		const
