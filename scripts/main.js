@@ -126,7 +126,7 @@ const TIC_TAC_TOE = (function () {
 				console.log(_move_counter);
 			}
 
-		return {MAKE_MOVE, _CHECK_FOR_WIN};
+		return {MAKE_MOVE, _CHECK_FOR_WIN, _CHECK_P1_WIN_STATES, _CHECK_P2_WIN_STATES};
 	})();
 
 	return {GAME_BOARD, GAME, PLAYER};
