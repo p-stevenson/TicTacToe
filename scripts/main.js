@@ -2,20 +2,17 @@ const TIC_TAC_TOE = (function () {
 	const _PLAYERS_LIST = [];
 
 	const GAME_BOARD = (function () {
-		const _BOARD = [
+		const BOARD = [
 			['*', '*', '*'],
 			['*', '*', '*'],
 			['*', '*', '*']
 		];
-		const DISPLAY_BOARD = () => {
-			console.log(_BOARD);
+
+		const UPDATE_BOARD = (row, col, playerSymbol) => {
+			BOARD[row].splice(col, 1, playerSymbol);
 		};
 
-		const _UPDATE_BOARD = (row, col, playerSymbol) => {
-			_BOARD[row].splice(col, 1, playerSymbol);
-		};
-
-		return {DISPLAY_BOARD, _BOARD, _UPDATE_BOARD};
+		return {BOARD, UPDATE_BOARD};
 	})();
 
 	const PLAYER = (function () {
