@@ -27,11 +27,7 @@ const TIC_TAC_TOE = (function () {
 			_PLAYERS_LIST.push(_CREATE_PLAYER(playerNumber));
 		}
 
-		const DISPLAY_PLAYERS = () => {
-			console.log(_PLAYERS_LIST);
-		}
-
-		return {ADD_PLAYER, DISPLAY_PLAYERS};
+		return {ADD_PLAYER};
 	})();
 
 	const GAME = (function () {
