@@ -1,4 +1,5 @@
 const TIC_TAC_TOE = (function () {
+	
 	const _PLAYERS_LIST = [];
 
 	const GAME_BOARD = (function () {
@@ -67,68 +68,59 @@ const TIC_TAC_TOE = (function () {
 
 		const MAKE_MOVE = (row, col, index) => {
 			_move_counter % 2 === 0 ? index = 0 : index = 1;
-			_CHECK_FOR_TIE(row, col, index)
+            _CHECK_POS_AVAIL(row, col, index) ? _CHECK_FOR_WIN() : _CHECK_FOR_TIE();
 		}
 
 		const _CHECK_POS_AVAIL = (row, col, index) => {
-
-			if (GAME_BOARD._BOARD[row][col] === "*") {
-				GAME_BOARD._UPDATE_BOARD(row, col, _PLAYERS_LIST[index].playerSymbol);
-				_INCREMENT_MOVE_COUNTER();
+			if (GAME_BOARD.BOARD[row][col] === "*") {
+				GAME_BOARD.UPDATE_BOARD(row, col, _PLAYERS_LIST[index].playerSymbol);
+				return true
 			} else {
 				console.log('This square is already in use, pick again.');
+				return false
 			}
 		}
-		const _CHECK_FOR_TIE = (row, col, index) => {
-			_move_counter !== 9 ? _CHECK_POS_AVAIL(row, col, index) : alert("It's a tie");
+		const _CHECK_FOR_TIE = () => {
+			if (_move_counter === 9) alert("It's a tie");
 		}
 
 		const _CHECK_FOR_WIN = () => {
-			if (_move_counter >= 5) {
-				if (_CHECK_P1_WIN_STATES()) {
-					alert('P1 Wins');
-				} else if (_CHECK_P2_WIN_STATES()) {
-					alert('P2 Wins');
-				} else {
-					console.log(`continue`);
-				}
-			} else {
-				console.log(_move_counter);
+            let _modifiedBoard;
+			_INCREMENT_MOVE_COUNTER();
+			if ((_move_counter >= 5) && (_move_counter % 2 !== 0)) {
+				_modifiedBoard = JSON.stringify(GAME_BOARD.BOARD).replaceAll(/(?!X)[A-Z]/gm, '*');
+				_CHECK_P1_WIN_STATES(_modifiedBoard);
+			} else if ((_move_counter >= 5) && (_move_counter % 2 === 0)) {
+				_modifiedBoard = JSON.stringify(GAME_BOARD.BOARD).replaceAll(/(?!O)[A-Z]/gm, '*');
+                _CHECK_P2_WIN_STATES(_modifiedBoard);
 			}
 		}
 
-		const _CHECK_P1_WIN_STATES = () => {
+		const _CHECK_P1_WIN_STATES = (_modifiedBoard) => {
 			_p1_win_states.forEach((element) => {
-				if (JSON.stringify(element) === JSON.stringify(GAME_BOARD._BOARD)) {
-					return true;
+				if(JSON.stringify(element) === _modifiedBoard) {
+                    return alert(`P1 Wins`);
 				}
 			});
 		};
 
-		const _CHECK_P2_WIN_STATES = () => {
+		const _CHECK_P2_WIN_STATES = (_modifiedBoard) => {
 			_p2_win_states.forEach((element) => {
-				if (JSON.stringify(element) === JSON.stringify(GAME_BOARD._BOARD)) {
-					return true;
+				if (JSON.stringify(element) === _modifiedBoard) {
+					return alert(`P2 Wins`);
 				}
 			});
 		};
 
-		const
-			_INCREMENT_MOVE_COUNTER = () => {
+		const _INCREMENT_MOVE_COUNTER = () => {
 				_move_counter += 1;
 				console.log(_move_counter);
 			}
 
-		return {MAKE_MOVE, _CHECK_FOR_WIN, _CHECK_P1_WIN_STATES, _CHECK_P2_WIN_STATES};
+		return {MAKE_MOVE};
 	})();
 
-	return {GAME_BOARD, GAME, PLAYER};
+	return {GAME, PLAYER};
 })();
-
-//TODO create method for win condition check
-//TODO link to DOM
-//TODO create method for rendering board?
-//TODO make methods private where appropriate
-
 
 console.log('end');
